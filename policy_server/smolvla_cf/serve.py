@@ -22,7 +22,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--scale", type=float, default=1.0)
-    parser.add_argument("--null", default="none", choices=["none", "mask"])
+    parser.add_argument("--null", default="none", choices=["none", "mask", "negative"])
     args = parser.parse_args()
     asyncio.run(serve(SmolVLA(args.scale, args.null), args.port))
 

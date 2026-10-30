@@ -1,7 +1,12 @@
+import json
+import pathlib
+
 import numpy as np
 import torch
 from lerobot.constants import ACTION, OBS_STATE
 from lerobot.policies.smolvla.modeling_smolvla import SmolVLAPolicy
+
+NEGATIVES = json.loads((pathlib.Path(__file__).parent / "negatives.json").read_text())
 
 
 class SmolVLA:
@@ -37,7 +42,11 @@ class SmolVLA:
 
         actions = sample(tokens, token_masks)
         if self.null != "none":
-            null_actions = sample(torch.zeros_like(tokens), torch.zeros_like(token_masks))
+            if self.null == "negative":
+                null_language = self.policy.prepare_language({**batch, "task": NEGATIVES[batch["task"]]})
+            else:
+                null_language = torch.zeros_like(tokens), torch.zeros_like(token_masks)
+            null_actions = sample(*null_language)
             actions = null_actions + self.scale * (actions - null_actions)
         actions = actions[:, :, : config.action_feature.shape[0]]
         actions = self.policy.unnormalize_outputs({ACTION: actions})[ACTION]

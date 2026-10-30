@@ -1,8 +1,13 @@
+import json
+import pathlib
+
 import numpy as np
 import pytest
 import torch
 
-from smolvla_cf.policy import SmolVLA
+from smolvla_cf.policy import NEGATIVES, SmolVLA
+
+CONDITIONS = pathlib.Path(__file__).parents[2] / "third_party/libero-cf/libero/libero/conditions/libero_cf_object.json"
 
 
 @pytest.fixture(scope="module")
@@ -36,10 +41,18 @@ def run(model, obs, scale, null):
     return model.infer(obs)["actions"]
 
 
-@pytest.mark.parametrize("null", ["mask"])
+@pytest.mark.parametrize("null", ["mask", "negative"])
 def test_guidance_formula(model, obs, null):
     conditional = run(model, obs, 1.0, "none")
     unconditional = run(model, obs, 0.0, null)
     np.testing.assert_allclose(run(model, obs, 1.0, null), conditional, atol=1e-5)
     np.testing.assert_allclose(run(model, obs, 2.0, null), 2 * conditional - unconditional, atol=1e-5)
     assert np.abs(conditional - unconditional).max() > 1e-3
+
+
+def test_negatives_name_the_benchmark_distractor():
+    conditions = json.loads(CONDITIONS.read_text())
+    assert len(conditions) == len(NEGATIVES) == 10
+    for key, (_, distractor) in conditions.items():
+        instruction = key.split("/")[1][3:-5].replace("_", " ")
+        assert distractor.split()[1].removesuffix("_1").replace("_", " ") in NEGATIVES[instruction]
