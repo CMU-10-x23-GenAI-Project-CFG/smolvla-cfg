@@ -1,0 +1,6 @@
+[submodule "third_party/libero-cf"]
+	path = third_party/libero-cf
+	url = https://github.com/yuffish/libero-cf.git
+[submodule "third_party/lerobot"]
+	path = third_party/lerobot
+	url = https://github.com/huggingface/lerobot.git

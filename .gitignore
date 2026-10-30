@@ -1,0 +1,7 @@
+envs/
+.libero/
+results/
+rollouts/
+__pycache__/
+*.egg-info/
+.pytest_cache/
