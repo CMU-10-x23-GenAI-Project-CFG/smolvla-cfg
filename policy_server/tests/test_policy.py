@@ -28,3 +28,18 @@ def test_matches_lerobot(model, obs):
     reference = model.policy.predict_action_chunk(model.to_batch(obs), noise=torch.randn(1, 50, 32))
     assert ours.shape == (50, 7)
     np.testing.assert_allclose(ours, reference[0].numpy(), atol=1e-6)
+
+
+def run(model, obs, scale, null):
+    model.scale, model.null = scale, null
+    torch.manual_seed(0)
+    return model.infer(obs)["actions"]
+
+
+@pytest.mark.parametrize("null", ["mask"])
+def test_guidance_formula(model, obs, null):
+    conditional = run(model, obs, 1.0, "none")
+    unconditional = run(model, obs, 0.0, null)
+    np.testing.assert_allclose(run(model, obs, 1.0, null), conditional, atol=1e-5)
+    np.testing.assert_allclose(run(model, obs, 2.0, null), 2 * conditional - unconditional, atol=1e-5)
+    assert np.abs(conditional - unconditional).max() > 1e-3

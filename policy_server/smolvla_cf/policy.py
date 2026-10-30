@@ -5,8 +5,10 @@ from lerobot.policies.smolvla.modeling_smolvla import SmolVLAPolicy
 
 
 class SmolVLA:
-    def __init__(self):
+    def __init__(self, scale=1.0, null="none"):
         torch.manual_seed(7)
+        self.scale = scale
+        self.null = null
         self.policy = SmolVLAPolicy.from_pretrained("k1000dai/smolvla_libero_finetune").eval()
         self.device = self.policy.config.device
 
@@ -33,6 +35,10 @@ class SmolVLA:
         def sample(tokens, masks):
             return self.policy.model.sample_actions(images, image_masks, tokens, masks, state, noise=noise.clone())
 
-        actions = sample(tokens, token_masks)[:, :, : config.action_feature.shape[0]]
+        actions = sample(tokens, token_masks)
+        if self.null != "none":
+            null_actions = sample(torch.zeros_like(tokens), torch.zeros_like(token_masks))
+            actions = null_actions + self.scale * (actions - null_actions)
+        actions = actions[:, :, : config.action_feature.shape[0]]
         actions = self.policy.unnormalize_outputs({ACTION: actions})[ACTION]
         return {"actions": actions[0].cpu().numpy()}
