@@ -99,8 +99,11 @@ $SIM_PY $CF/eval/main_cf.py --args.task_suite_name libero_cf_object --args.port 
 
 ## 5. Send back
 
+This keeps the logs and the per-episode trajectory JSONs, and drops only the
+big replay videos:
+
 ```bash
-zip -r results_praneet.zip results -x '*/rollouts/*'
+zip -r results_praneet.zip results -x '*/videos/*'
 ```
 
 Send me `results_praneet.zip`. That's it — I'll take it from there.
