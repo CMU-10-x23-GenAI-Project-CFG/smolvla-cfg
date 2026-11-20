@@ -1,0 +1,102 @@
+{
+ "pick up the cream cheese and place it in the basket": {
+  "instructed": "cream cheese",
+  "distractor": "alphabet soup",
+  "negative": "pick up the alphabet soup and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the salad dressing and place it in the basket",
+  "wrong_object": "salad dressing",
+  "paraphrase": "move the alphabet soup into the basket",
+  "generic": "pick up the object and place it in the basket"
+ },
+ "pick up the butter and place it in the basket": {
+  "instructed": "butter",
+  "distractor": "cream cheese",
+  "negative": "pick up the cream cheese and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the alphabet soup and place it in the basket",
+  "wrong_object": "alphabet soup",
+  "paraphrase": "move the cream cheese into the basket",
+  "generic": "pick up the object and place it in the basket"
+ },
+ "pick up the tomato sauce and place it in the basket": {
+  "instructed": "tomato sauce",
+  "distractor": "salad dressing",
+  "negative": "pick up the salad dressing and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the ketchup and place it in the basket",
+  "wrong_object": "ketchup",
+  "paraphrase": "move the salad dressing into the basket",
+  "generic": "pick up the object and place it in the basket"
+ },
+ "pick up the salad dressing and place it in the basket": {
+  "instructed": "salad dressing",
+  "distractor": "bbq sauce",
+  "negative": "pick up the bbq sauce and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the chocolate pudding and place it in the basket",
+  "wrong_object": "chocolate pudding",
+  "paraphrase": "move the bbq sauce into the basket",
+  "generic": "pick up the object and place it in the basket"
+ },
+ "pick up the milk and place it in the basket": {
+  "instructed": "milk",
+  "distractor": "ketchup",
+  "negative": "pick up the ketchup and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the bbq sauce and place it in the basket",
+  "wrong_object": "bbq sauce",
+  "paraphrase": "move the ketchup into the basket",
+  "generic": "pick up the object and place it in the basket"
+ },
+ "pick up the bbq sauce and place it in the basket": {
+  "instructed": "bbq sauce",
+  "distractor": "tomato sauce",
+  "negative": "pick up the tomato sauce and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the milk and place it in the basket",
+  "wrong_object": "milk",
+  "paraphrase": "move the tomato sauce into the basket",
+  "generic": "pick up the object and place it in the basket"
+ },
+ "pick up the ketchup and place it in the basket": {
+  "instructed": "ketchup",
+  "distractor": "butter",
+  "negative": "pick up the butter and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the tomato sauce and place it in the basket",
+  "wrong_object": "tomato sauce",
+  "paraphrase": "move the butter into the basket",
+  "generic": "pick up the object and place it in the basket"
+ },
+ "pick up the orange juice and place it in the basket": {
+  "instructed": "orange juice",
+  "distractor": "milk",
+  "negative": "pick up the milk and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the cream cheese and place it in the basket",
+  "wrong_object": "cream cheese",
+  "paraphrase": "move the milk into the basket",
+  "generic": "pick up the object and place it in the basket"
+ },
+ "pick up the alphabet soup and place it in the basket": {
+  "instructed": "alphabet soup",
+  "distractor": "chocolate pudding",
+  "negative": "pick up the chocolate pudding and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the orange juice and place it in the basket",
+  "wrong_object": "orange juice",
+  "paraphrase": "move the chocolate pudding into the basket",
+  "generic": "pick up the object and place it in the basket"
+ },
+ "pick up the chocolate pudding and place it in the basket": {
+  "instructed": "chocolate pudding",
+  "distractor": "orange juice",
+  "negative": "pick up the orange juice and place it in the basket",
+  "empty": "",
+  "wrong": "pick up the butter and place it in the basket",
+  "wrong_object": "butter",
+  "paraphrase": "move the orange juice into the basket",
+  "generic": "pick up the object and place it in the basket"
+ }
+}

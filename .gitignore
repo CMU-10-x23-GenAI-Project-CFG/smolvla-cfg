@@ -5,3 +5,6 @@ rollouts/
 __pycache__/
 *.egg-info/
 .pytest_cache/
+F26_10423_Project Details (1).pdf
+handover-*.md
+policy_server/tests/test_pi05.py
